@@ -332,4 +332,18 @@ b. Write code that converts text, instead of individual words.
 c. Extend it further to preserve capitalization, to keep qu together (so that
 quiet becomes ietquay, for example), and to detect when y is used as a consonant
 (e.g., yellow) versus a vowel (e.g., style)."""
+import re
 
+def pig_latin(word):
+    reg_exp=r"\b([wrtypsdfghjklzxcvbnm(?:qu)]+)(\w+)\b"
+    temp=re.search(reg_exp, word)
+    if not temp:
+        return word+"ay"
+    else:
+        return temp.group(2)+temp.group(1)+"ay"
+
+
+
+
+pig_latin("quiet")
+pig_latin("string")
